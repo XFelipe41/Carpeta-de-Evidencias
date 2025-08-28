@@ -1,0 +1,265 @@
+/* --- Variables y Estilos Globales --- */
+:root {
+  --color-primario: #2c3e50; /* Azul oscuro */
+  --color-secundario: #3498db; /* Azul claro (acento) */
+  --color-fondo-claro: #ecf0f1; /* Gris muy claro */
+  --color-texto-claro: #fdfdfd;
+  --color-texto-oscuro: #34495e;
+  --fuente-principal: 'Lato', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto-oscuro);
+  line-height: 1.6;
+}
+
+/* El contenedor principal que centra el contenido y limita su ancho */
+.container {
+  max-width: 850px; /* Ancho reducido para simular una hoja */
+  margin: 3rem auto; /* Aumentamos el margen superior/inferior */
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil para efecto papel */
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Para que el borde redondeado afecte al header */
+}
+
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Encabezado --- */
+header {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem; /* Aumentamos el padding para dar más espacio a la imagen de fondo */
+  /* Reemplazamos el color sólido por una imagen con superposición oscura */
+  background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+  background-size: cover;
+  color: var(--color-texto-claro);
+}
+
+header img {
+  width: 250px; /* Imagen más grande */
+  height: 250px; /* Imagen más grande */
+  border-radius: 50%;
+  border: 5px solid var(--color-secundario);
+  margin-right: 2.5rem;
+  flex-shrink: 0; /* Evita que la imagen se encoja */
+  z-index: 1;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de elevación */
+
+}
+
+header h1 {
+  margin-bottom: 0.25rem;
+  font-size: 2.8rem;
+}
+
+header .titulo {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-secundario);
+}
+
+/* --- Contenido Principal (Layout de 2 columnas) --- */
+main {
+  display: flex;
+  flex-wrap: wrap; /* Para que en móvil se apilen */
+}
+
+/* --- Columna Izquierda (Aside) --- */
+aside {
+  flex: 1;
+  min-width: 280px; /* Ancho mínimo */
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-right: 1px solid #e0e0e0;
+}
+
+aside h2 {
+  color: var(--color-primario);
+  border-bottom: 2px solid var(--color-secundario);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+aside ul {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+aside li {
+  margin-bottom: 0.75rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.contact-item a {
+  color: var(--color-texto-oscuro);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  fill: var(--color-secundario);
+  flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+/* --- Columna Derecha (Section) --- */
+section {
+  flex: 2;
+  padding: 2rem;
+}
+
+section h2 {
+  color: var(--color-primario);
+  border-bottom: 2px solid var(--color-secundario);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.item {
+  margin-bottom: 1.5rem;
+}
+
+.item .periodo {
+  font-weight: 700;
+  color: var(--color-secundario);
+  font-size: 0.9rem;
+}
+
+.item .titulo-item {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-primario);
+}
+
+/* --- Estilos para la Línea de Tiempo Vertical --- */
+.timeline {
+  position: relative;
+  padding-left: 40px; /* Espacio para la línea y los puntos */
+}
+
+/* La línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; /* Posición de la línea */
+  top: 5px;
+  bottom: 5px;
+  width: 3px;
+  background-color: #e0e0e0; /* Un color más suave para la línea */
+  border-radius: 3px;
+}
+
+.timeline .item {
+  position: relative; /* Necesario para el pseudo-elemento ::before */
+}
+
+/* El punto en la línea de tiempo */
+.timeline .item::before {
+  content: '';
+  position: absolute;
+  left: -39px; /* Posiciona el punto sobre la línea */
+  top: 5px; /* Alinea verticalmente con el texto del periodo */
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-secundario);
+  border: 3px solid #fff;
+  z-index: 1; /* Para que esté por encima de la línea */
+}
+
+
+/* --- Diseño Adaptable (Responsive) --- */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  header img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline .item::before {
+    left: -34px;
+  }
+}
+
+/* --- Estilos para el Footer --- */
+footer {
+  padding: 1.5rem;
+  background-color: var(--color-primario);
+  color: rgba(253, 253, 253, 0.7); /* Texto claro pero no tan brillante como el header */
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
